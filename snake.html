@@ -17,8 +17,6 @@ body {
 </style>
 <body background="bgimage.jpg">
     <bgsound src="play.mp3" loop="infinite" />
-    <!--<embed src="play.mp3" autostart="true" hidden="false" loop="true" volume="100" width="0" height="0"></embed>-->
-    <!--<audio src="play.mp3" autoplay loop></audio>-->
     <canvas id="myCanvas" width="600" height="400" style="border:10px solid rgb(81, 234, 234);">Your browser does not support the HTML5 canvas tag.</canvas><!--browser do not support canvas-->
     <!--不須錯誤替代內容 id="foo"-->
     <script>
@@ -64,29 +62,3 @@ body {
 </body>
 
 </html>
-
-
-<!--
-#line25
-    支援性檢查：替代內容會被不支援<canvas>.的瀏覽器所顯示。程式碼腳本也可以利用檢查getContext()方法是否存在來檢查是否支援<canvas>
-    var canvas = document.getElementById('myCanvas');
-    if (canvas.getContext){
-    var ctx = canvas.getContext('2d');
-    // drawing code here
-    } else {
-    // canvas-unsupported code here
-    }
-
-#line38
-    陣列處理方法 pop與push、shift與unshift
-    push()
-    向陣列尾端新增一個或多個元素，並return新的長度
-    pop() 後進先出
-    pop()和push()相反，作用為刪除陣列最後一個元素，把陣列長度減1，並return被刪除元素的值。若為空陣列，則該方法不改變陣列，return undefine。
-    unshift()
-    unshift則是向陣列的開頭新增一個或多個元素，並且return新的長度
-    shift()
-    和unshift相法，是進行刪除陣列元素，同樣地:若陣列是空的則return undefine
-    (reference https://ithelp.ithome.com.tw/articles/10205221?sc=iThelpR)
--->
-
