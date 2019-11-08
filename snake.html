@@ -1,0 +1,92 @@
+<html>
+<head>
+</head>
+<style>
+//canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 800px;
+}
+body {
+    background-size:cover;
+}
+
+</style>
+<body background="bgimage.jpg">
+    <bgsound src="play.mp3" loop="infinite" />
+    <!--<embed src="play.mp3" autostart="true" hidden="false" loop="true" volume="100" width="0" height="0"></embed>-->
+    <!--<audio src="play.mp3" autoplay loop></audio>-->
+    <canvas id="myCanvas" width="600" height="400" style="border:10px solid rgb(81, 234, 234);">Your browser does not support the HTML5 canvas tag.</canvas><!--browser do not support canvas-->
+    <!--不須錯誤替代內容 id="foo"-->
+    <script>
+        var ctx = document.getElementById("myCanvas").getContext("2d"),//呼叫document.getElementById()來取得<canvas>元素，用其getContext()取得渲染環境 //var canvas = document.getElementById('myCanvas'); var ctx = canvas.getContext('2d');
+            r = [{
+                x: 10,
+                y: 9
+            }, {
+                x: 10,
+                y: 8
+            }], //snake start point & body
+            co = 40, //snake方向 上38 下40 左37 右39
+            e = null; //eat
+        ctx.shadowBlur = 20, ctx.shadowColor = "rgb(81, 234, 234)"; //陰影大小 顏色
+        setInterval(function() {
+            if (check(r[0], 0) || r[0].x < 0 || r[0].x >= 60 || r[0].y < 0 || r[0].y >= 40) return;
+            e != null && ((co == 40 && r[0].x == e.x && r[0].y + 1 == e.y) || (co == 38 && r[0].x == e.x && r[0].y - 1 == e.y) || (co == 37 && r[0].x - 1 == e.x && r[0].y == e.y) || (co == 39 && r[0].x + 1 == e.x && r[0].y == e.y)) ? (r.unshift(e), e = null, r.unshift(r.pop())) : (r.unshift(r.pop()));
+            (co == 40 || co == 38) ? (r[0].x = r[1].x, r[0].y = r[1].y + (co == 40 ? 1 : -1)) : (r[0].x = r[1].x + (co == 39 ? 1 : -1), r[0].y = r[1].y);
+            //console.log(e);//console.log(r);
+            ctx.clearRect(0, 0, 600, 400);//清除指定矩形區域內的內容
+            if (e) ctx.fillRect(e.x * 10, e.y * 10, 10, 10);//填滿的矩形
+            for (var i = 0; i < r.length; i++) ctx.fillRect(r[i].x * 10, r[i].y * 10, 10, 10);
+            while (e == null || check(e)) e = {
+                x: (Math.random() * 60 >>> 0),
+                y: (Math.random() * 40 >>> 0)
+            };
+            if (check(r[0], 0) || r[0].x < 0 || r[0].x >= 60 || r[0].y < 0 || r[0].y >= 40) alert("遊戲結束你輸了\n你的分數是~ [" + (r.length - 2) + "]");
+        }, 100);
+        document.onkeyup = function(event) {
+            co = event.keyCode >= 37 && event.keyCode <= 40 && (Math.abs(event.keyCode - co) != 2) ? event.keyCode : co;
+        }//按鍵被鬆開時發生
+
+        function check(e, j) {
+            for (var i = 0; i < r.length; i++)
+                if (j != i && r[i].x == e.x && r[i].y == e.y) return true;
+            return false;
+        }
+    </script>
+    <br>
+    <p>
+        <font face="DFKai-sb" size="10" color="#fb3569">來玩喔~來玩貪吃蛇蛇喔~</font>
+    </p>
+</body>
+
+</html>
+
+
+<!--
+#line25
+    支援性檢查：替代內容會被不支援<canvas>.的瀏覽器所顯示。程式碼腳本也可以利用檢查getContext()方法是否存在來檢查是否支援<canvas>
+    var canvas = document.getElementById('myCanvas');
+    if (canvas.getContext){
+    var ctx = canvas.getContext('2d');
+    // drawing code here
+    } else {
+    // canvas-unsupported code here
+    }
+
+#line38
+    陣列處理方法 pop與push、shift與unshift
+    push()
+    向陣列尾端新增一個或多個元素，並return新的長度
+    pop() 後進先出
+    pop()和push()相反，作用為刪除陣列最後一個元素，把陣列長度減1，並return被刪除元素的值。若為空陣列，則該方法不改變陣列，return undefine。
+    unshift()
+    unshift則是向陣列的開頭新增一個或多個元素，並且return新的長度
+    shift()
+    和unshift相法，是進行刪除陣列元素，同樣地:若陣列是空的則return undefine
+    (reference https://ithelp.ithome.com.tw/articles/10205221?sc=iThelpR)
+-->
+
