@@ -43,7 +43,7 @@ body {
                 x: (Math.random() * 60 >>> 0),
                 y: (Math.random() * 40 >>> 0)
             };
-            if (check(r[0], 0) || r[0].x < 0 || r[0].x >= 60 || r[0].y < 0 || r[0].y >= 40) alert("遊戲結束你輸了\n你的分數是~ [" + (r.length - 2) + "]");
+            if (check(r[0], 0) || r[0].x < 0 || r[0].x >= 60 || r[0].y < 0 || r[0].y >= 40) alert("遊戲結束\n你的分數是~ [" + (r.length - 2) + "]");
         }, 100);
         document.onkeyup = function(event) {
             co = event.keyCode >= 37 && event.keyCode <= 40 && (Math.abs(event.keyCode - co) != 2) ? event.keyCode : co;
@@ -57,7 +57,7 @@ body {
     </script>
     <br>
     <p>
-        <font face="DFKai-sb" size="10" color="#fb3569">來玩喔~來玩貪吃蛇蛇喔~</font>
+        <font face="DFKai-sb" size="10" color="#fb3569">來玩貪吃蛇！！</font>
     </p>
 </body>
 
