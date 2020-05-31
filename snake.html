@@ -6,7 +6,7 @@ body {
     background-size:cover;
 }
 </style>
-<body background="bgimage.jpg">
+<body background="256907-1F60Q0340594.jpg">
     <bgsound src="play.mp3" loop="infinite" />
     <canvas id="myCanvas" width="600" height="400" style="border:10px solid rgb(66, 187, 243);">Your browser does not support the HTML5 canvas tag.</canvas><!--browser do not support canvas-->
     <!--不須錯誤替代內容 id="foo"-->
@@ -41,7 +41,7 @@ body {
                 x: (Math.random() * 60 >>> 0),
                 y: (Math.random() * 40 >>> 0)
             };
-            if (snake[0].x < 0 || snake[0].x >= 60 || snake[0].y < 0 || snake[0].y >= 40) if (!alert("遊戲結束\n你獲得~ " + (snake.length - 2) + "分")){window.location.reload();}
+            if (snake[0].x < 0 || snake[0].x >= 60 || snake[0].y < 0 || snake[0].y >= 40) if (!alert("遊戲結束\n獲得~ " + (snake.length - 2) + "分")){window.location.reload();}
         }, 100);
         document.onkeyup = function(event) {
             co = event.keyCode >= 37 && event.keyCode <= 40 && (Math.abs(event.keyCode - co) != 2) ? event.keyCode : co;
@@ -49,7 +49,7 @@ body {
     </script>
     <br>
     <p>
-        <font face="DFKai-sb" size="10" color="#fb3569">來玩貪吃蛇！！</font>
+        <font face="DFKai-sb" size="10" color="#fb3569">吃吃吃吃吃吃吃吃</font>
     </p>
 </body>
 
